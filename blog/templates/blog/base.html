@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,49 +11,37 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <style>
-      #sidebar {
-        min-width: 250px;
-        max-width: 250px;
-        min-height: 100vh;
-        transition: all 0.3s;
-      }
-      #sidebar.collapsed {
-        margin-left: -250px;
-      }
-      #content {
-        width: 100%;
-        transition: all 0.3s;
-      }
-      #sidebar.collapsed ~ #content {
-        margin-left: 0;
-      }
-      #sidebar .list-group-item {
-        border: none;
-      }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="{% static "blog/styles.css" %}" rel="stylesheet" />
   </head>
   <body>
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+        <button class="btn btn-primary" id="menu-toggle">
+          <span class="material-icons"> menu </span>
+        </button>
+        <a class="navbar-brand" href="{% url "blog-home" %}">Blog</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url "blog-home" %}">Home</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            <a class="nav-link active" aria-current="page" href="/admin">Login</a>
+          </span>
+        </div>
       </div>
     </nav>
     <div class="d-flex" id="wrapper">
       <!-- Sidebar -->
       <div class="bg-light border-right" id="sidebar">
         <div class="list-group list-group-flush">
-          <a href="#" class="list-group-item list-group-item-action bg-light"
+          <a href="{% url "blog-home" %}" class="list-group-item list-group-item-action bg-light"
             >Dashboard</a
-          >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Profile</a
-          >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Settings</a
-          >
-          <a href="#" class="list-group-item list-group-item-action bg-light"
-            >Help</a
           >
         </div>
       </div>
