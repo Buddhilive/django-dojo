@@ -36,6 +36,14 @@
         </div>
       </div>
     </nav>
+    <main>
+      {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+      {% endif %}
     <div class="d-flex" id="wrapper">
       <!-- Sidebar -->
       <div class="bg-light border-right" id="sidebar">
@@ -55,6 +63,7 @@
       </div>
       <!-- /#page-content-wrapper -->
     </div>
+    </main>
 
     <!-- Bootstrap core JavaScript -->
     <script

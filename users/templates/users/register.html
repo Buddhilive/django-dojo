@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+{% block title %}Register{% endblock title %}
+{% block content %}
+<div>
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Register</legend>
+        {{ form.as_div }}
+    </fieldset>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <a href="#">Have a account already?</a>
+  </form>
+</div>
+{% endblock content %}
