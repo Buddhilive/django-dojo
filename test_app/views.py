@@ -3,8 +3,8 @@ from .models import TodoItem
 
 # Create your views here.
 def home(request):
-    return render(request, "index.html")
+    return render(request, "test_app/index.html")
 
 def todos(request):
     todo_items = TodoItem.objects.all()
-    return render(request, "todo.html", { "todos": todo_items })
+    return render(request, "test_app/todo.html", { "todos": todo_items })
