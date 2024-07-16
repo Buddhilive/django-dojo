@@ -93,3 +93,6 @@ dojo/
 
 # .vscode
 .vscode/
+
+# Media files
+uploads/
