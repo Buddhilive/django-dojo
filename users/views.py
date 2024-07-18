@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 
 def register_view(request):
     if request.method == "POST":
@@ -22,4 +22,12 @@ def logout_view(request):
 
 @login_required
 def profile_view(request):
-    return render(request, 'users/profile.html')
+    user_form = UserUpdateForm()
+    profile_form = ProfileUpdateForm()
+    
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+    
+    return render(request, 'users/profile.html', context)
