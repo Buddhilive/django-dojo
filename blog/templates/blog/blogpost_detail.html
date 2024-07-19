@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ object.title }}{% endblock title %}
+{% block content %}
+<article class="mydojo-blog">
+    <h5>{{ object.title }}</h5>
+    <h6>{{ object.date_posted }}</h6>
+    <p>{{ object.content }}</p>
+</article>
+{% endblock content %}
