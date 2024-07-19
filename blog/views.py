@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
     DetailView,
-    CreateView
+    CreateView,
+    UpdateView
 )
 from .models import BlogPost
 
@@ -31,3 +32,17 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = BlogPost
+    fields = ['title', 'content']
+    
+    def test_func(self) -> bool | None:
+        post = self.get_object()
+        
+        if self.request.user == post.author: # type: ignore
+            return True
+        return False
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)

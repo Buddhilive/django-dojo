@@ -2,9 +2,9 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
 <h1>Welcome!</h1>
-<div class="mydojo-blog d-flex">
+<div class="mydojo-blog d-flex flex-wrap">
     {% for post in blog_posts %}
-    <a class="card" style="width: 18rem" href="{% url 'blog-post-view' post.id %}">
+    <a class="card me-3 mb-3" style="width: 18rem" href="{% url 'blog-post-view' post.id %}">
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.author }}</h6>
