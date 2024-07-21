@@ -4,7 +4,8 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
-    UpdateView
+    UpdateView,
+    DeleteView
 )
 from .models import BlogPost
 
@@ -46,3 +47,14 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = BlogPost
+    success_url = '/'
+    
+    def test_func(self) -> bool | None:
+        post = self.get_object()
+        
+        if self.request.user == post.author: # type: ignore
+            return True
+        return False
