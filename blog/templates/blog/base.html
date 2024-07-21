@@ -32,6 +32,7 @@
           </ul>
           <span class="navbar-text d-flex">
             {% if user.is_authenticated  %}
+            <a class="nav-link me-3" aria-current="page" href="{% url "blog-create-view" %}">Create Post</a>
             <a class="nav-link me-3" aria-current="page" href="{% url "profile-page" %}">{{ user.username }}</a>
             <a class="nav-link me-3" aria-current="page" href="/admin">Admin</a>
             <a class="nav-link" aria-current="page" href="{% url "logout-page" %}">Logout</a>

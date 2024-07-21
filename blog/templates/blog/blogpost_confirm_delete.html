@@ -9,7 +9,7 @@
         <h2>Are you sure you want to delete post: {{ object.title }}</h2>
     </fieldset>
     <button class="btn btn-danger" type="submit">Yes</button>
-    <a class="btn btn-secondary ms-3" href="%{% url "blog-post-view" object.id %}">Cancel</a>
+    <a class="btn btn-secondary ms-3" href="{% url "blog-post-view" object.id %}">Cancel</a>
   </form>
 </div>
 {% endblock content %}

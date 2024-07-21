@@ -5,5 +5,9 @@
     <h5>{{ object.title }}</h5>
     <h6>{{ object.date_posted }}</h6>
     <p>{{ object.content }}</p>
+    {% if object.author == user %}
+    <a class="btn btn-primary" href="{% url "blog-update-view" object.id %}">Update</a>
+    <a class="btn btn-danger ms-3" href="{% url "blog-delete-view" object.id %}">Delete</a>
+    {% endif %}
 </article>
 {% endblock content %}
